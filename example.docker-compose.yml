@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: deploy/backend-dockerfile
+    restart: always
+    ports:
+      - "50002:8000"
+    volumes:
+      - ./tmp/static:/usr/src/app/tmp/static
+      - ./tmp/media:/usr/src/app/tmp/media
+    environment:
+      - SECRET_KEY=d%1@0y&kn^@^_wu08c&vkzccirrq#kip%09w5(wyax10hs(j(y
+      - DEBUG=1
+      - ALLOWED_HOST=localhost
+      - DB_DATABASE=easyguide
+      - DB_USERNAME=easyguide
+      - DB_PASSWORD=ahDae9Neequo
+      - DB_HOST=db
+      - DB_PORT=5432
+      - STATIC_ROOT=/usr/src/app/tmp/static
+      - MEDIA_ROOT=/usr/src/app/tmp/media
+    depends_on:
+      - db
+
+  db:
+    build:
+      context: .
+      dockerfile: deploy/db-dockerfile
+      args:
+        - DB_DATABASE=easyguide
+        - DB_USERNAME=easyguide
+        - DB_PASSWORD=ahDae9Neequo
+    restart: always
+    ports:
+      - "50012:5432"
+    environment:
+      - POSTGRES_PASSWORD=Cue7yiekonge
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
