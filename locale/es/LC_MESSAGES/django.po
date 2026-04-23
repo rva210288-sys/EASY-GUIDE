@@ -1,0 +1,55 @@
+#: website/templates/base.html:43
+msgid "Trips"
+msgstr ""
+
+#: website/templates/base.html:46 website/templates/base.html:164
+msgid "Guides"
+msgstr ""
+
+#: website/templates/base.html:49
+msgid "Support"
+msgstr ""
+
+#: website/templates/base.html:58
+msgid "My trips"
+msgstr ""
+
+#: website/templates/base.html:60
+msgid "Suggest a trip"
+msgstr ""
+
+#: website/templates/base.html:95
+msgid "Profile"
+msgstr ""
+
+#: website/templates/base.html:96
+msgid "Settings"
+msgstr ""
+
+#: website/templates/base.html:98
+msgid "Log out"
+msgstr ""
+
+#: website/templates/base.html:105
+msgid "Log in"
+msgstr ""
+
+#: website/templates/base.html:155
+msgid "Terms&Conditions and Privacy Statement"
+msgstr ""
+
+#: website/templates/base.html:157
+msgid "Details"
+msgstr ""
+
+#: website/templates/base.html:159
+msgid "Security and Trust"
+msgstr ""
+
+#: website/templates/base.html:162
+msgid "Travel Arrangements"
+msgstr ""
+
+#: website/templates/base.html:187
+msgid "Invite friends"
+msgstr ""
