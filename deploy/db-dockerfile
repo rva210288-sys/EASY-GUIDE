@@ -1,0 +1,23 @@
+FROM postgres:11.4
+
+
+# Installing PostGIS
+
+RUN apt-get update && apt-get install -y \
+    binutils \
+    libproj-dev \
+    gdal-bin \
+    postgresql-11-postgis-2.5
+
+
+# Passing database parameters to db-init.sql
+
+ARG DB_DATABASE
+ARG DB_USERNAME
+ARG DB_PASSWORD
+
+COPY deploy/db-init.sql /docker-entrypoint-initdb.d/
+
+RUN sed -i "s/{database}/$DB_DATABASE/g" /docker-entrypoint-initdb.d/db-init.sql && \
+    sed -i "s/{username}/$DB_USERNAME/g" /docker-entrypoint-initdb.d/db-init.sql && \
+    sed -i "s/{password}/$DB_PASSWORD/g" /docker-entrypoint-initdb.d/db-init.sql

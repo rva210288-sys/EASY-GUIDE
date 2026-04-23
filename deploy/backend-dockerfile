@@ -1,0 +1,25 @@
+FROM python:3.7
+
+WORKDIR /usr/src/app
+
+RUN apt-get update && apt-get install -y \
+    binutils \
+    libproj-dev \
+    gdal-bin
+
+RUN pip install --upgrade pip
+
+RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh; \
+    chmod 755 nodesource_setup.sh; \
+    ./nodesource_setup.sh; \
+    apt-get update; \
+    apt-get install -y nodejs; \
+    rm nodesource_setup.sh
+
+EXPOSE 8000
+
+COPY . /usr/src/app
+
+ENTRYPOINT ["/usr/src/app/deploy/entrypoint.sh"]
+
+CMD uwsgi --ini deploy/uwsgi.ini
